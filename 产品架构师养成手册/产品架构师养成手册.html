@@ -228,6 +228,45 @@
       font-style: italic;
     }
 
+    .float-buttons {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .float-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #6B4C9A;
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(107, 76, 154, 0.4);
+      transition: all 0.3s ease;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .float-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(107, 76, 154, 0.5);
+      background: #7d5cb0;
+    }
+
+    .float-btn:active {
+      transform: translateY(-1px);
+    }
+
     @media print {
       @page {
         margin: 20mm;
@@ -255,6 +294,10 @@
       .ending {
         page-break-before: always;
       }
+
+      .float-buttons {
+        display: none;
+      }
     }
 
     @media print {
@@ -271,17 +314,17 @@
   <nav class="toc">
     <h2>目录</h2>
     <ul>
-      <li>Chapter 01 — 产品架构师是什么</li>
-      <li>Chapter 02 — 思维跃迁：从程序员到架构师</li>
-      <li>Chapter 03 — 核心能力模型：九域四十三项</li>
-      <li>Chapter 04 — 成长路径：四阶段进阶</li>
-      <li>Chapter 05 — 架构设计方法论</li>
-      <li>Chapter 06 — 产品架构设计实战</li>
-      <li>Chapter 07 — 技术架构与产品架构的协同</li>
-      <li>Chapter 08 — 架构师日常工作指南</li>
-      <li>Chapter 09 — 常见问题与避坑指南</li>
-      <li>Chapter 10 — 持续成长与自我修炼</li>
-      <li>附录 — 架构师工具箱与资源清单</li>
+      <li><a href="#ch1" style="color: #6B4C9A; text-decoration: none;">Chapter 01 — 产品架构师是什么</a></li>
+      <li><a href="#ch2" style="color: #6B4C9A; text-decoration: none;">Chapter 02 — 思维跃迁：从程序员到架构师</a></li>
+      <li><a href="#ch3" style="color: #6B4C9A; text-decoration: none;">Chapter 03 — 核心能力模型：九域四十三项</a></li>
+      <li><a href="#ch4" style="color: #6B4C9A; text-decoration: none;">Chapter 04 — 成长路径：四阶段进阶</a></li>
+      <li><a href="#ch5" style="color: #6B4C9A; text-decoration: none;">Chapter 05 — 架构设计方法论</a></li>
+      <li><a href="#ch6" style="color: #6B4C9A; text-decoration: none;">Chapter 06 — 产品架构设计实战</a></li>
+      <li><a href="#ch7" style="color: #6B4C9A; text-decoration: none;">Chapter 07 — 技术架构与产品架构的协同</a></li>
+      <li><a href="#ch8" style="color: #6B4C9A; text-decoration: none;">Chapter 08 — 架构师日常工作指南</a></li>
+      <li><a href="#ch9" style="color: #6B4C9A; text-decoration: none;">Chapter 09 — 常见问题与避坑指南</a></li>
+      <li><a href="#ch10" style="color: #6B4C9A; text-decoration: none;">Chapter 10 — 持续成长与自我修炼</a></li>
+      <li><a href="#appendix" style="color: #6B4C9A; text-decoration: none;">附录 — 架构师工具箱与资源清单</a></li>
     </ul>
   </nav>
 
@@ -1493,5 +1536,28 @@ docker exec -it [container] bash  # 进入容器
     <div class="cta">希望这本手册能帮助你顺利完成从程序员到产品架构师的转型</div>
     <div class="desc">持续学习，不断实践，架构之路没有终点</div>
   </div>
+
+  <div class="float-buttons">
+    <button class="float-btn" onclick="goToHome()" title="返回主页">返回<br>主页</button>
+    <button class="float-btn" onclick="scrollToTOC()" title="返回目录">返回<br>目录</button>
+    <button class="float-btn" onclick="scrollToTop()" title="返回顶部">返回<br>顶部</button>
+  </div>
+
+  <script>
+    function goToHome() {
+      window.location.href = '../index.html';
+    }
+
+    function scrollToTOC() {
+      const toc = document.querySelector('nav.toc');
+      if (toc) {
+        toc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
